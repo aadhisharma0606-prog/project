@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Details</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1 id="vehicle-title">Vehicle Details</h1>
+        <a href="index.html">Back to Home</a>
+    </header>
+    
+    <main>
+        <img id="vehicle-image" src="" alt="Vehicle" style="width:100%; max-width:600px;">
+        <h2>Specifications</h2>
+        <table id="specs-table">
+            <tr><th>Spec</th><th>Value</th></tr>
+            <!-- Specs loaded via JS -->
+        </table>
+        <p id="history">History: [Brief description]</p>
+    </main>
+    
+    <footer>
+        <p>&copy; 2023 Hindustan Motors Vehicle Specs Hub.</p>
+    </footer>
+    
+    <script>
+        // Simple dynamic loading based on URL param
+        const urlParams = new URLSearchParams(window.location.search);
+        const model = urlParams.get('model');
+        const specsData = {
+            ambassador: {
+                title: "Hindustan Ambassador",
+                image: "images/ambassador.jpg",
+                specs: {
+                    "Engine": "1.8L Petrol",
+                    "Power": "75 hp",
+                    "Torque": "123 Nm",
+                    "Top Speed": "140 km/h",
+                    "Fuel Efficiency": "10-12 km/l",
+                    "Dimensions": "L: 4325mm, W: 1662mm, H: 1593mm",
+                    "Seating": "5",
+                    "Price": "₹5-10 lakh (used)",
+                    "Transmission": "Manual",
+                    "Fuel Tank": "55L"
+                },
+                history: "Launched in 1958, based on Morris Oxford. Iconic Indian taxi and government car, discontinued in 2014."
+            },
+            contessa: {
+                title: "Hindustan Contessa",
+                image: "images/contessa.jpg",
+                specs: {
+                    "Engine": "1.8L Petrol",
+                    "Power": "68 hp",
+                    "Torque": "123 Nm",
+                    "Top Speed": "135 km/h",
+                    "Fuel Efficiency": "9-11 km/l",
+                    "Dimensions": "L: 4325mm, W: 1662mm, H: 1593mm",
+                    "Seating": "5",
+                    "Price": "₹3-7 lakh (used)",
+                    "Transmission": "Manual",
+                    "Fuel Tank": "55L"
+                },
+                history: "A luxury version of the Ambassador, produced from 1984-2002."
+            },
+            trekker: {
+                title: "Hindustan Trekker",
+                image: "images/trekker.jpg",
+                specs: {
+                    "Engine": "2.0L Diesel",
+                    "Power": "63 hp",
+                    "Torque": "137 Nm",
+                    "Top Speed": "120 km/h",
+                    "Fuel Efficiency": "12-15 km/l",
+                    "Dimensions": "L: 4325mm, W: 1662mm, H: 1593mm",
+                    "Seating": "7",
+                    "Price": "₹8-15 lakh (used)",
+                    "Transmission": "Manual",
+                    "Fuel Tank": "55L"
+                },
+                history: "Off-road variant of the Ambassador, produced from 1985-1995."
+            },
+            porter: {
+                title: "Hindustan Porter",
+                image: "images/porter.jpg",
+                specs: {
+                    "Engine": "1.3L Diesel",
+                    "Power": "37 hp",
+                    "Torque": "85 Nm",
+                    "Top Speed": "100 km/h",
+                    "Fuel Efficiency": "15-18 km/l",
+                    "Dimensions": "L: 4325mm, W: 1662mm, H: 1593mm",
+                    "Seating": "2",
+                    "Price": "₹4-8 lakh (used)",
+                    "Transmission": "Manual",
+                    "Fuel Tank": "40L"
+                },
+                history: "Light commercial vehicle, produced from 1983-2000."
+            },
+            pajero: {
+                title: "Mitsubishi Pajero (Hindustan Motors)",
+                image: "images/pajero.jpg",
+                specs: {
+                    "Engine": "2.8L Diesel",
+                    "Power": "125 hp",
+                    "Torque": "294 Nm",
+                    "Top Speed": "160 km/h",
+                    "Fuel Efficiency": "8-10 km/l",
+                    "Dimensions": "L: 4820mm, W: 1880mm, H: 1850mm",
+                    "Seating": "7",
+                    "Price": "₹20-40 lakh (used)",
+                    "Transmission": "Manual/Auto",
+                    "Fuel Tank": "92L"
+                },
+                history: "Assembled in India from 1991-2000, known for off-road capability."
+            },
+            lancer: {
+                title: "Mitsubishi Lancer (Hindustan Motors)",
+                image: "images/lancer.jpg",
+                specs: {
+                    "Engine": "2.0L Petrol",
+                    "Power": "136 hp",
+                    "Torque": "176 Nm",
+                    "Top Speed": "190 km/h",
+                    "Fuel Efficiency": "10-12 km/l",
+                    "Dimensions": "L: 4490mm, W: 1715mm, H: 1415mm",
+                    "Seating": "5",
+                    "Price": "₹5-12 lakh (used)",
+                    "Transmission": "Manual",
+                    "Fuel Tank": "50L"
+                },
+                history: "Assembled from 1995-2000, a sedan variant."
+            },
+            pushpak: {
+                title: "Hindustan Pushpak",
+                image: "images/pushpak.jpg",
+                specs: {
+                    "Engine": "0.8L Petrol",
+                    "Power": "26 hp",
+                    "Torque": "52 Nm",
+                    "Top Speed": "90 km/h",
+                    "Fuel Efficiency": "18-20 km/l",
+                    "Dimensions": "L: 3320mm, W: 1420mm, H: 1620mm",
+                    "Seating": "4",
+                    "Price": "₹1-3 lakh (used)",
+                    "Transmission": "Manual",
+                    "Fuel Tank": "25L"
+                },
+                history: "Three-wheeler van, produced from 1985-1995."
+            },
+            vega: {
+                title: "Hindustan Vega",
+                image: "images/vega.jpg",
+                specs: {
+                    "Engine": "1.3L Diesel",
+                    "Power": "50 hp",
+                    "Torque": "100 Nm",
+                    "Top Speed": "110 km/h",
+                    "Fuel Efficiency": "14-16 km/l",
+                    "Dimensions": "L: 4325mm, W: 1662mm, H: 1593mm",
+                    "Seating": "5",
+                    "Price": "₹3-6 lakh (used)",
+                    "Transmission": "Manual",
+                    "Fuel Tank": "45L"
+                },
+                history: "Diesel variant of the Contessa, produced briefly in the 1990s."
+            },
+            mighty: {
+                title: "Hindustan Mighty",
+                image: "images/mighty.jpg",
+                specs: {
+                    "Engine": "2.0L Diesel",
+                    "Power": "80 hp",
+                    "Torque": "160 Nm",
+                    "Top Speed": "130 km/h",
+                    "Fuel Efficiency": "10-12 km/l",
+                    "Dimensions": "L: 4820mm, W: 1880mm, H: 1850mm",
+                    "Seating": "7",
+                    "Price": "₹10-20 lakh (used)",
+                    "Transmission": "Manual
